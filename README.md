@@ -1,3 +1,5 @@
 # Internship Tracking Web App
 
 Using Passport.js for oAuth2 authentication with Google accounts. First, setup your MySQL server to run the project. 
+
+Simply, I have developed an application as my sixth semester project at University which has been using OAuth2 protocol to make a connection between student's Google accounts to authenticate with the application. The application gets the information of the students by using this protocol and execute that data. The main goal of the application is for students to inform their supervisor's at the university in which company they want to have their traineship and the students are able to fill a form within the web application to inform. Also the students are able to get the required form automatically filled with the data of students by the application as PDF format. I have used Node.js at the back-end, Materialize CSS and Vanilla JS at the front-end, MongoDB as real time database and NPM to use and config other libraries such as Passport.js and PDF Creator.
