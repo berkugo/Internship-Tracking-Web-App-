@@ -1,0 +1,17 @@
+<div class="col s12 m7 l7">
+    <div class=" carousel carousel-slider center-align" style="border-radius: 5px;">
+        <div class="carousel-fixed-item center">
+            <img style="width: 70px; padding:20px;" src="/images/ktn.png">
+
+        </div>
+        <%for(let i = 0; i<anno.length; i++) {%>
+        <!--red lighten-5-->
+        <div class="carousel-item left-align left black-text" style="background-color: #721a23; padding: 10px;" href="#one!">
+            <h2 class="white-text center"><%=anno[i].title%></h2>
+            <p class="white-text" style="margin: 10px;"><%=anno[i].content%></p>
+        </div>
+        <%}%>
+    
+    </div>
+
+</div>

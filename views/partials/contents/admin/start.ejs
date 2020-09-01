@@ -1,0 +1,88 @@
+<%if(period === 0){%>
+<div class="col s12 m17 l7 black-text center">
+    <ul class="collection with-header center-align red-text text-darken-4">
+        <form action="/auth/period/start" method="GET">
+
+            <li class="collection-header left-align">
+                <h4>Staj Süreci Başlat</h4>
+                <div class="row center-align">
+                    <div class="input-field col s12 m12 l12">
+                        <label for="date">Son evrak teslim tarihi seçin:</label>
+                        <input name="date" id="date" type="text" class="col s12 m6 l6 datepicker" required>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <p>
+                            Bulunulan eğitim öğretim dönemi içerisinde staj süreci başlatıyorsunuz. Eğitim öğretim
+                            dönemi
+                            sona erdiğinde staj sürecini sona erdirebilirsiniz.
+                        </p>
+                        <p>
+                            <button type="submit" class="collection-item black-text"> <i
+                                    class="red-text text-darken-4 material-icons left">add</i>Staj sürecini
+                                başlat</button>
+
+                        </p>
+                    </div>
+                </div>
+        </form>
+
+</div>
+
+</li>
+
+
+</ul>
+
+</div>
+<%}else{%>
+
+<div class="col s12 m7 l7 black-text center">
+    <ul class="collection with-header left-align red-text text-darken-4">
+        <li class="collection-header left-align">
+            <h4>Staj Süreci</h4>
+            <div class="row">
+                <div class="input-field col s12 m5 l5">
+                    <label for="date">Son evrak teslim tarihi:</label>
+                    <input disabled value="<%=period[0].bgdate%>" id="date" type="text"
+                        class="col s12 m6 l6 datepicker">
+                </div>
+                <div class="col s12 m7 l7">
+                    <b>Eğitim-Öğretim Dönemi:</b> <%=period[0].period%>
+                    <p><b>Toplam başvuru:</b> <%=period[0].applicationcount%></p>
+                    <p><b>Geçerli sayılan / onaylanmış staj başvurusu:</b> <%=period[0].applicationcount%> </b></p>
+
+
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <p>
+                        Devam etmekte olan bir staj süreci bulunmaktadır, staj formunun son doldurulma tarihini
+                        öğrenciye özel olarak staj onay & kabul arayüzünden değiştirebilirsiniz.
+                        Varsayılan olarak <b><%=period[0].bgdate%></b> tarihi sisteme girilmiştir. Son tarihten itibaren
+                        moderatörlere öğrencileri atama işlemini gerçekleştirmeniz tavsiye edilir.
+                        Staj kabul, red işlemlerinden sonra bir sonraki dönem için yeni bir staj süreci başlatabilmek
+                        için güncel staj sürecini sonlandırmanız gerekmektedir.
+                    </p>
+                    <p>
+                        <a id="" href="/auth/period/finished" class="collection-item black-text"> <i
+                                class="red-text text-darken-4 material-icons left">remove</i>Staj sürecini
+                            bitir</a>
+                        <a id="" href="/auth/addadmin/list" class="collection-item black-text"> <i
+                                class="red-text text-darken-4 material-icons  left">loop</i>Moderatörleri dağıt</a>
+                    </p>
+                </div>
+            </div>
+
+        </li>
+
+
+    </ul>
+
+</div>
+<%}%>

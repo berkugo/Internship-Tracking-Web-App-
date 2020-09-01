@@ -1,0 +1,56 @@
+<%if(period === 0){%>
+<div class="col s12 m7 l7 black-text left">
+    <ul class="collection with-header left-align red-text text-darken-4 z-depth-2">
+        <li class="collection-header left-align">
+
+            <h4>Şu anda devam eden bir staj süreci bulunmuyor!</h3>
+                <h5>Yönetici tarafından mevcut öğretim dönemi içerisinde bir staj süreci başlatılmamış.</h3>
+
+        </li>
+
+    </ul>
+
+</div>
+
+<%}else{%>
+<div class="col s12 m7 l7 black-text left">
+    <ul class="collection with-header left-align red-text text-darken-4 z-depth-2">
+        <li class="collection-header left-align">
+            <h4>Staj Kabul & Onay</h4>
+            <b><h6>Güncel eğitim - öğretim dönemi:</b> <%=period[0].period%></h6>
+            <b><h6>Formu son güncellediğiniz tarih:</b> <%=forms.date%>
+        </li>
+        
+
+    </ul>
+    <div class="collection z-depth-3" style="font-size: smaller;">
+       
+       
+            <%if(forms.acceptance === 0 && forms.result === 0){%>
+        <a href="" class="text-darken-4 red-text left-align collection-item"><span
+                style="font-size: smaller;" class="white-text badge red">Staj
+                sonuç: Onaylanmadı</span><span style="font-size: smaller;" class="white-text badge red">Moderatör:
+                Atanmadı</span><span style="font-size: smaller;" class="white-text badge red">Staj kabul:
+                Onaylanmadı</span><b><%=forms.namesurname%></b> -
+            <%=forms.studentnumber%></a>
+        <%}else if(forms.acceptance === 1 && forms.result === 0){%>
+        <a href="" class="text-darken-4 red-text left-align collection-item"><span
+                style="font-size: smaller;" class="white-text badge red">Staj
+                sonuç: Onaylanmadı</span><span style="font-size: smaller;" class="white-text badge red">Moderatör:
+                Atanmadı</span><span style="font-size: smaller;" class="white-text badge green">Staj kabul:
+                Onaylandı</span><b><%=forms.namesurname%></b> -
+            <%=forms.studentnumber%></a>
+        <%}else if(forms.acceptance === 1 && forms.result === 1){%>
+        <a href="" class="text-darken-4 red-text left-align collection-item"><span
+                style="font-size: smaller;" class="white-text badge green">Staj
+                sonuç: Onaylandı</span><span style="font-size: smaller;" class="white-text badge red">Moderatör:
+                Atanmadı</span><span class="white-text badge green" style="font-size: smaller;">Staj kabul:
+                Onaylandı</span><b><%=forms.namesurname%></b> -
+            <%=forms.studentnumber%></a>
+        <%}%>
+
+    </div>
+
+
+</div>
+<%}%>

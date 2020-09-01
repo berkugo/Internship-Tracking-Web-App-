@@ -1,0 +1,62 @@
+<%-include partials/headers/header.ejs%>
+
+<%if(error === 1) {%>
+<div id="modal1" class="modal modal-fixed-footer">
+  <div class="modal-content red-text text-darken-4">
+    <div class="center center-align"><img class="center-align center" style="width: 150px; padding:20px;"
+        src="/images/logo.png"></div>
+    <h4>Hata</h4>
+    <p>Konya Teknik Üniversitesi Staj Bilgilendirme Sistemi üzerinden işlemler sadece .ktun.edu.tr
+      uzantılı e-mail adresleri üzerinden gerçekleştirilebilmektedir, şu anda farklı bir Google hesabı üzerinden sisteme
+      erişmeye çalışıyorsunuz. Güncel Google hesabınızdan çıkış yaptıktan sonra <b>.ktun.edu.tr</b> uzantılı e-mail
+      adresiniz ile sisteme giriş yapmayı deneyin.
+    </p>
+  </div>
+  <div class="modal-footer  red darken-4">
+    <a href="#!" class="modal-close white-text waves-effect waves-red btn-flat"><b>Tamam</b></a>
+  </div>
+</div>
+<script>document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.modal');
+    var instances = M.Modal.init(elems, {});
+    instances[0].open();
+  }); </script>
+<%}%>
+<div class="container-fluid">
+  <div class="container">
+   
+    <div class="row" style="margin-top: 50px;">
+      <div class="col s12 m12 l12">
+        <div class="card white">  
+          <div class="card-content red-text text-darken-4">
+            <span class="card-title"><b>Önemli Bilgilendirme !</b></span>
+            <p>Staj başvurusu için gereken formları bölüm sekreterliğine teslim etmeden önce dijital staj formunu sisteme giriş yaparak doldurmanız gerekmektedir.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m12 l12">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img style="width: 250px; " src="/images/classroom.jpg">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <p>Bu sisteme giriş yapabilmek için <b>@ktun.edu.tr</b> uzantılı e-mail adresiniz ile Google hesabınıza giriş yapmış olmanız gerekmektedir, 
+              sistem otomatik olarak Classroom hesabınızın bilgilerini edinmektedir, herhangi bir kişisel mail adresiyle sisteme giriş yapamazsınız. 
+              Sisteme giriş yapmak için aşağıda bulunan butona tıklayın, sistem sizi ilgili sayfaya yönlendirecektir. </p>
+            </div>
+            <div class="card-action center-align center">
+
+
+              <a href="/auth/google" class="btn-floating red darken-4 pulse"><i
+                  class="white-text material-icons left">school</i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%-include partials/footers/footer.ejs%>

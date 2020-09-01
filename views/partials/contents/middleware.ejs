@@ -1,0 +1,37 @@
+<%if(period === 0){%>
+<div class="col s12 m7 l7 black-text left">
+    <ul class="collection with-header left-align red-text text-darken-4 z-depth-2">
+        <li class="collection-header left-align">
+
+            <h4>Şu anda devam eden bir staj süreci bulunmuyor!</h3>
+                <h5>Yönetici tarafından mevcut öğretim dönemi içerisinde bir staj süreci başlatılmamış.</h3>
+
+        </li>
+
+    </ul>
+
+</div>
+
+<%}else{%>
+
+<div class="col s12 m7 l7 white-text center">
+    <h5 style="padding-bottom: 20px;">Staj bilgi formu son güncellenme tarihi - <b><%=period[0].bgdate%></b></h5>
+
+    <div class="collection left-align">
+
+
+        <%for(let i = length-1; i>=0; i--){%>
+            <%if(i === 0){%>
+            <a href="#!" class="red-text text-darken-4 collection-item"><span class="white-text red darken-4 badge"
+                    style="font-size:smaller;"><b><%=forms[i].date%></b></span>Staj bilgi formunu oluşturdunuz. -</a>
+            <%}else{%>
+                <a href="#!" class="red-text text-darken-4 collection-item"><span class="white-text red darken-4 badge"
+                    style="font-size:smaller;"><b><%=forms[i].date%></b></span>Staj bilgi formunu güncellediniz. -</a>
+            <%}%>
+        <%}%>
+    </div>                
+    <a href="/auth/form?update=1" id="editform" style="background-color: #721a23;"
+        class="waves-effect waves-light white-text btn btn-small center-align center" style="margin-top: 10px;"><b>FORMU Düzenle</b></a>
+
+</div>
+<%}%>

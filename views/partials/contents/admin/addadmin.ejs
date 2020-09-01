@@ -1,0 +1,35 @@
+<div class="col s12 m7 l7 black-text center">
+    <ul class="collection with-header left-align red-text text-darken-4">
+        <li class="collection-header left-align">
+            <h4>Moderatör ekle</h4>
+            <h6>Moderatör olarak atamak istediğiniz öğretim görevlileri sisteme bir kez @ktun.edu.tr uzantılı mail
+                adresleriyle giriş yapmış olmalıdır.</h6>
+            <h6>Sistem staj başvurularını otomatik olarak her bir moderatöre eşit olacak şekilde dağıtmaktadır.</h6>
+            <h6>Yetkisi bulunmayan öğretim görevlileri staj başvuruları ile ilgili herhangi bir işlem yapamaz.</h6>
+        </li>
+        <%for(let i = 0; i<admins.length; i++){%>
+        <li class="collection-item" style="padding: 20px;">
+            <%if(admins[i].level === 2){%>
+            <div><b><%=admins[i].pname%> </b>- <%=admins[i].uname%>@ktun.edu.tr - Genel Yönetici</div>
+            <%}else if(admins[i].level === 1){%>
+            <div><b>
+                    <div class="chip red darken-4 white-text"><b><%=admins[i].pname%>
+                        </b> - <%=admins[i].uname%>@ktun.edu.tr - Moderatör
+                </b></div><a href="/auth/addadmin/delete?id=<%=admins[i].uname%>"
+                class="valign-wrapper right right-align btn-floating btn-small waves-effect waves-light red"><i
+                    class="material-icons">close</i></a>
+</div>
+<%}else{%>
+<div><b><%=admins[i].pname%> </b> - <%=admins[i].uname%>@ktun.edu.tr - Yetkisiz Öğr. Görevlisi<a
+        href="/auth/addadmin/addmod?id=<%=admins[i].uname%>"
+        class="valign-wrapper right right-align btn-floating btn-small waves-effect waves-light red"><i
+            class="material-icons">add</i></a></div>
+<%}%>
+
+
+        </li>
+        <%}%>
+
+</ul>
+
+</div>

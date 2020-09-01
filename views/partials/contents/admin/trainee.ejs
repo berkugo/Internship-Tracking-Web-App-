@@ -1,0 +1,109 @@
+<%if(period === 0){%>
+<div class="col s12 m7 l7 black-text left">
+    <ul class="collection with-header left-align red-text text-darken-4 z-depth-2">
+        <li class="collection-header left-align">
+
+            <h4>Şu anda devam eden bir staj süreci bulunmuyor!</h3>
+                <h5>Genel yönetici tarafından mevcut öğretim dönemi içerisinde bir staj süreci başlatılmamış.</h3>
+
+                    <h4>Staj Kabul & Onay</h4>
+                    <h6>Bu bölümden öğrencilerin doldurmuş olduğu staj başvuru formlarını görebilir, staj başvurularını
+                        onaylayabilir daha sonra staj kabul işlemlerini gerçekleştirebilirsiniz.</h6>
+                    <h6>Sistem otomatik olarak tüm başvuruları moderatörlere dağıtmaktadır. </h6>
+                    <h6>Yetkisi bulunmayan öğretim görevlileri staj başvuruları ile ilgili herhangi bir işlem yapamaz.
+                        Sadece
+                        görüntüleyebilir.</h6>
+
+        </li>
+
+    </ul>
+
+</div>
+
+<%}else{%>
+
+<div class="col s12 m7 l7 black-text left">
+    <ul class="collection with-header left-align red-text text-darken-4 z-depth-2">
+        <li class="collection-header left-align">
+            <h4>Staj Kabul & Onay</h4>
+            <h6><b>Eğitim öğretim dönemi: </b><%=period[0].period%></h6>
+            <h6>Bu bölümden öğrencilerin doldurmuş olduğu staj başvuru formlarını görebilir, staj başvurularını
+                onaylayabilir daha sonra staj kabul işlemlerini gerçekleştirebilirsiniz.</h6>
+            <h6>Sistem otomatik olarak tüm başvuruları moderatörlere dağıtmaktadır. </h6>
+            <h6>Yetkisi bulunmayan öğretim görevlileri staj başvuruları ile ilgili herhangi bir işlem yapamaz. Sadece
+                görüntüleyebilir.</h6>
+
+        </li>
+
+    </ul>
+    <div class="row valign-wrapper center-align center">
+
+        <form class="col s12 m6 l6" action="/auth/trainee/default" method="GET">
+            <div class="row valign-wrapper">
+                <div class="col s2 m2 l2"><button class="center btn-floating btn-small waves-effect waves-light red"><i
+                            class="material-icons">search</i></button></div>
+
+                <div class="col s10 m10 l10 transparent">
+                    <input type="text" class="active white-text" placeholder="Öğrenci numarası giriniz.." name="q"
+                        id="srch-term">
+
+                </div>
+            </div>
+        </form>
+        <div class="col s12 m6 l6 transparent">
+            <a class='col s12 m12 l12 dropdown-trigger red btn' href='#' data-target='dropdown1'>Moderatörler</a>
+        </div>
+
+
+    </div>
+    <ul id='dropdown1' class='dropdown-content red-text'>
+        <%for(let i = 0; i<admins.length; i++){%>
+        <%if(admins[i].level !== 0){%>
+        <li><a class="red-text" href="#!"><b><%=admins[i].pname%></b> - <%=admins[i].uname%>@ktun.edu.tr</a></li>
+        <%}%>
+        <%}%>
+    </ul>
+    <div class="collection z-depth-3" style="font-size: smaller;">
+        <%if(forms.length !== 0){%>
+
+        <a href="#!" class="white-text red white-text center-align collection-item"><span
+                class="white-text badge">Toplam: <%=forms.length%></span><b>Başvurular - </b></a>
+        <%for(let i = 0; i<forms.length; i++){%>
+        <%if(forms[i].acceptance === 0 && forms[i].result === 0){%>
+        <a href="/trainee/<%=forms[i].studentnumber%>" class="text-darken-4 red-text left-align collection-item"><span
+                style="font-size: smaller;" class="white-text badge red">Staj
+                sonuç: Onaylanmadı</span><span style="font-size: smaller;" class="white-text badge red">Moderatör:
+                Atanmadı</span><span style="font-size: smaller;" class="white-text badge red">Staj kabul:
+                Onaylanmadı</span><b><%=forms[i].namesurname%></b> -
+            <%=forms[i].studentnumber%></a>
+        <%}else if(forms[i].acceptance === 1 && forms[i].result === 0){%>
+        <a href="/trainee/<%=forms[i].studentnumber%>" class="text-darken-4 red-text left-align collection-item"><span
+                style="font-size: smaller;" class="white-text badge red">Staj
+                sonuç: Onaylanmadı</span><span style="font-size: smaller;" class="white-text badge red">Moderatör:
+                Atanmadı</span><span style="font-size: smaller;" class="white-text badge green">Staj kabul:
+                Onaylandı</span><b><%=forms[i].namesurname%></b> -
+            <%=forms[i].studentnumber%></a>
+        <%}else if(forms[i].acceptance === 1 && forms[i].result === 1){%>
+        <a href="/trainee/<%=forms[i].studentnumber%>" class="text-darken-4 red-text left-align collection-item"><span
+                style="font-size: smaller;" class="white-text badge green">Staj
+                sonuç: Onaylandı</span><span style="font-size: smaller;" class="white-text badge red">Moderatör:
+                Atanmadı</span><span class="white-text badge green" style="font-size: smaller;">Staj kabul:
+                Onaylandı</span><b><%=forms[i].namesurname%></b> -
+            <%=forms[i].studentnumber%></a>
+        <%}%>
+                <%}%>
+        <%}else{%>
+        <a href="#!" class="white-text red white-text center-align collection-item"><span
+                class="white-text badge">Toplam: 0</span><b>Başvurular - </b></a>
+
+
+        <%}%>
+
+
+
+    </div>
+   
+
+</div>
+
+<%}%>

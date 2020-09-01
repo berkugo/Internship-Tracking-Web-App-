@@ -1,0 +1,98 @@
+<%-include partials/headers/header.ejs%>
+
+
+
+
+<div class="container-fluid" style="padding:5px;">
+
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="col s12 m3 l3 offset-l1 center" style="border-radius: 5px;">
+            <ul id="slide-out" style="padding: 10px" class="sidenav sidenav-fixed">
+                <li>
+                    <div>
+                        <div class="white center center-align" style="border-radius: 3px;">
+                            <%if(picturestate === 0){%>
+
+                            <img style="width: 100px; margin: 20px;"
+                                class="center-align center white circle responsive-img" src="/images//pp.png">
+                            <button style="background-color: #721a23;" id="fake" style="margin: 5px;"
+                                class="red btn btn-small center-align white-text center waves-effect waves-light"
+                                type="file" name="action">Görsel yükle / 2MB
+                            </button>
+                            <%}else{%>
+
+                            <img style="width: 100px; margin: 20px;"
+                                class="center-align center white circle responsive-img"
+                                src="/pictures/<%=studentNumber%>/profile.png">
+
+                            <%}%>
+                        <input id="real" class="hide" style="margin: 5px;"
+                            class="btn btn-small center-align red white-text center waves-effect waves-light" type="file"
+                            name="action">
+                        </input>
+                    </div>
+
+
+                    <ul class="collection" style="font-size: small;">
+
+                        <li class=" collection-item avatar">
+                            <i class="material-icons red darken-4 circle">school</i>
+
+                            <p><%=name%><br>
+                            <%=studentNumber%>
+
+                            </p>
+                </li>
+                <li class="collection-item avatar ">
+                    <i class="material-icons red darken-4 circle">subtitles</i>
+                    <%if(department === 13){%>
+                    <p>Mühendislik ve Doğa Bilimleri Fakültesi <br>
+                        Bilgisayar Mühendisliği
+                    </p>
+                    <%}else if(department === 20){%>
+                    <p>Mühendislik ve Doğa Bilimleri Fakültesi <br>
+                        Bilgisayar Mühendisliği (İÖ)
+
+                    </p>
+                    <%}%>
+
+                </li>
+
+                <div class="collection left-align">
+                    <a href="/auth/handle" class="collection-item black-text"><i
+                            class="red-text text-darken-4 material-icons circle left">view_headline</i>Duyurular</a>
+                    <a id="createTraineeForm" href="/auth/form" class="collection-item black-text"> <i
+                            class="red-text text-darken-4 material-icons circle left">edit</i>Staj
+                        Bilgilerini
+                        Oluştur</a>
+                    <a id="" href="/auth/checktrainee" class="collection-item black-text"> <i
+                            class="red-text text-darken-4 material-icons circle left">priority_high</i>Staj Onay
+                        Takip</a>
+                    <a id="" disabled href="#!" class="collection-item black-text"> <i
+                            class="red-text text-darken-4 material-icons circle left">check_box_outline_blank
+                        </i>Staj
+                        Başvuru Formu Oluştur / Pasif</a>
+
+                </div>
+            </ul>
+
+        </div>
+    </div>
+    </li>
+    </ul>
+
+    <%if(page === 0) {%>
+                    <%-include partials/contents/main.ejs %>
+                    <%}else if(page === 1){%>
+                    <%-include partials/contents/form.ejs %>
+                    <%}else if(page === 3){%>
+                    <%-include partials/contents/checktrainee.ejs%>
+                    <%}else{%>
+                    <%-include partials/contents/middleware.ejs %>
+                    <%}%>
+
+    </div>
+
+</div>
+<%-include partials/footers/footer.ejs%>

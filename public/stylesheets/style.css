@@ -1,0 +1,13 @@
+
+.card-image.img
+{
+  height:150px;
+}
+
+.material-icons.md1::before{
+  content:"search"; 
+}
+
+.material-icons.md1:hover::before{
+  content:"navigate_next"; 
+}

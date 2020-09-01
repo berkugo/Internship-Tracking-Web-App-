@@ -1,0 +1,420 @@
+<%if(period === 0){%>
+<div class="col s12 m7 l7 black-text left">
+    <ul class="collection with-header left-align red-text text-darken-4 z-depth-2">
+        <li class="collection-header left-align">
+
+            <h4>Şu anda devam eden bir staj süreci bulunmuyor!</h3>
+                <h5>Yönetici tarafından mevcut öğretim dönemi içerisinde bir staj süreci başlatılmamış.</h3>
+
+
+        </li>
+
+    </ul>
+
+</div>
+
+<%}else{%>
+
+<div id="modal_picture" class="modal modal-fixed-footer">
+    <div class="modal-content red-text text-darken-4">
+        <div class="center center-align"><img class="center-align center" style="width: 150px; padding:20px;"
+                src="/images/logo.png"></div>
+        <h4>Staj Bilgi Formu</h4>
+        <p>Konya Teknik Üniversitesi Staj Bilgilendirme Sistemi üzerinden bir Staj Bilgilendirme Formu oluşturdunuz,
+            bu form son güncellenme tarihine kadar sistemde kayıtlı kalacaktır, form üzerinde değişiklik yapmak
+            istediğiniz zaman staj bilgilerini oluştur sekmesinde oluşacak Düzenle butonunu
+            kullanarak form içeriğini değiştirip tekrar kaydedebilirsiniz.
+        </p>
+    </div>
+    <div class="modal-footer  red darken-4">
+        <a href="#!" class="modal-close white-text waves-effect waves-red btn-flat"><b>Tamam</b></a>
+    </div>
+</div>
+<%if(formBefore === null){%>
+<form name="ktun_trainee" action="/auth/inform" id="traineeform" class="center-align">
+    <div class="hoverable col s12 m7 l7 red-text text-darken-4 z-depth-1"
+        style="font-weight: bolder; border-radius: 15px;">
+        <div style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px;">
+
+            <div class="row white red-text text-darken-4" style="padding: 20px;">
+                <div class="row right right-align">
+                    <%if(picturestate === 1){%>
+                    <img style="width: 100px; margin: 20px;" class="col s6 center-align left white responsive-img"
+                        src="/pictures/<%=studentNumber%>/profile.png">
+                    <%}else{%>
+                    <img style="width: 100px; margin: 20px;"
+                        class="col s6 center-align center white circle responsive-img" src="/images/pp.png">
+                    <%}%>
+            
+            </div>
+
+            <div class="row red-text text-darken-4">
+                <div class="input-field col s12 m6 l6 red-text text-darken-4">
+                    <input disabled id="first_name" value="<%=studentNumber%>" name="studentnumber" type="text"
+                    class="validate">
+                    <label for="first_name">Öğrenci numarası</label>
+                </div>
+                <div class=" input-field col s12 m6 l6">
+                    <input disabled value="<%=name%>" id="disabled" name="namesurname" type="text" class="validate">
+                    <label for="disabled">Ad Soyad</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class=" input-field col s12 m6 l6 red-text text-darken-4">
+                    <input required title="Lütfen 11 haneli kimlik numaranızı giriniz.." 
+                        name="idcardno" id="last_name" type="number" class="validate">
+                    <label for="last_name">T.C kimlik no / yabancı uyruklu kimlik no</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input disabled value="Bilgisayar Mühendisliği" id="" name="course" type="text" class="validate">
+                    <label for="password">Bölümü</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input disabled value="<%=email%>" id="email" name="email" type="email" class="validate">
+                    <label for="email">Email adresiniz</label>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="input-field col s12">
+                    <input required id="number" name="number" type="number" class="validate">
+                    <label for="email">Cep telefonu numaranız</label>
+                </div>
+            </div>
+            <div style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px;">
+                <div class="row">
+                    <div class=" input-field col s12 m4 l4">
+                        <input required value="30" id="numberofdays" name="traineedays" type="number" class="validate">
+                        <label for="email">Staj gün sayısı</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="traineeperiod">
+                            <option value="1" selected>1.Staj</option>
+                            <option value="2">2.Staj</option>
+                        </select>
+                        <label>Staj dönemi</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input required name="companyname" type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Stajın yapılacağı işletme adı</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m4 l4">
+                        <input required name="city" type="text" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Stajın yapılacağı şehir</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="traineeform">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>Staj Başvuru Formu</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="healthform">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>Sağlık Hizmet Bildirim Formu</label>
+                    </div>
+
+                </div>
+            </div>
+            <div style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px; margin-top: 9px;">
+
+                <div class="row">
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="idcardphoto">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>Nüfus Cüzdanı Fotokopisi(Önlü/Arkalı)</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="unemployedform">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>İşsizlik Fonu Öğrenci ve İşveren Formu</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="ghi">
+                            <option value="none" selected>Hayır</option>
+                            <option value="yes">Evet</option>
+                        </select>
+                        <label>Genel Sağlık Sigortalıyım(GSS)</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div id="trainee_price" class="center input-field col s12 m12 l12">
+                        <p>
+                            <label>
+                                <input name="companyprice" type="checkbox" class="red-text filled-in" />
+                                <span>Staj yapacağınız kurumdan ücret alacak mısınız?</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="hide" id="hide_content"
+                style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px; margin-top: 9px;">
+
+                <div id="option">
+                    <div class="row">
+                        <div class="input-field col s12 m4 l4">
+                            <input name="companyname" type="text" id="autocomplete-input" class="autocomplete">
+                            <label for="autocomplete-input">Stajın yapılacağı işletme adı</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <select name="companypersonals">
+                                <option value="1" selected>20'den az</option>
+                                <option value="2">20'den fazla</option>
+                            </select>
+                            <label>İşletmede çalışan personel sayısı</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input name="taxno" type="text" id="vergino" class="">
+                            <label for="vergino">İşletmenin vergi numarası</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m4 l4">
+                            <input name="bankname" type="text" id="bankname" class="">
+                            <label for="bankname">İşletmenin banka ve şube adı</label>
+                        </div>
+
+                        <div class="input-field col s12 m4 l4">
+
+                            <input value="TR" name="ibanno" type="text" id="iban" class="">
+                            <label for="iban">İşletme IBAN numarası</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input name="companyphonenumber" type="number" id="iban" class="">
+                            <label for="iban">İşletme telefon numarası</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input name="address" type="text" id="address" class="">
+                            <label for="address">İşletmenin açık adresi</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <select name="companytype">
+                                <option value="1" selected>Özel</option>
+                                <option value="2">Devlet</option>
+                            </select>
+                            <label>İşletmenin niteliği</label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <a onClick="sub();" class="waves-effect waves-light red white-text btn btn-small center-align center"
+                style="margin-top: 10px;">Kaydet / Güncelle</a>
+
+
+
+</form>
+<%}else{%>
+<form name="ktun_trainee" action="/auth/inform" id="traineeform" class="center-align">
+    <div class="hoverable col s12 m7 l7 red-text text-darken-4 z-depth-1"
+        style="font-weight: bolder; border-radius: 15px;">
+        <div style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px;">
+
+            <div class="row white red-text text-darken-4" style="padding: 20px;">
+                <div class="row right right-align">
+                    <%if(picturestate === 1){%>
+                    <img style="width: 100px; margin: 20px;" class="col s6 center-align left white responsive-img"
+                        src="/pictures/<%=studentNumber%>/profile.png">
+                    <%}else{%>
+                    <img style="width: 100px; margin: 20px;"
+                        class="col s6 center-align center white circle responsive-img" src="/images/pp.png">
+                    <%}%>
+            
+            </div>
+
+            <div class="row red-text text-darken-4">
+                <div class="input-field col s12 m6 l6 red-text text-darken-4">
+                    <input disabled id="first_name" value="<%=studentNumber%>" name="studentnumber" type="text"
+                    class="validate">
+                    <label for="first_name">Öğrenci numarası</label>
+                </div>
+                <div class=" input-field col s12 m6 l6">
+                    <input disabled value="<%=name%>" id="disabled" name="namesurname" type="text" class="validate">
+                    <label for="disabled">Ad Soyad</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class=" input-field col s12 m6 l6 red-text text-darken-4">
+                    <input required title="Lütfen 11 haneli kimlik numaranızı giriniz.." value="<%=dcrypted%>"
+                        name="idcardno" maxlength = "11" id="last_name" type="number" class="validate">
+                    <label for="last_name">T.C kimlik no / yabancı uyruklu kimlik no</label>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 l6">
+                    <input disabled value="Bilgisayar Mühendisliği" id="" name="course" type="text" class="validate">
+                    <label for="password">Bölümü</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input disabled value="<%=email%>" id="email" name="email" type="email" class="validate">
+                    <label for="email">Email adresiniz</label>
+                </div>
+            </div>
+            <div class="row">
+
+                <div class="input-field col s12">
+                    <input required id="number" name="number" type="number" value="<%=formBefore.phonenumber%>" class="validate">
+                    <label for="email">Cep telefonu numaranız</label>
+                </div>
+            </div>
+            <div style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px;">
+                <div class="row">
+                    <div class=" input-field col s12 m4 l4">
+                        <input required value="30" id="numberofdays" name="traineedays" value="<%=formBefore.traineedays%>" type="number" class="validate">
+                        <label for="email">Staj gün sayısı</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="traineeperiod">
+                            <option value="1" selected>1.Staj</option>
+                            <option value="2">2.Staj</option>
+                        </select>
+                        <label>Staj dönemi</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <input required name="companyname" type="text" value="<%=formBefore.companyname%>" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Stajın yapılacağı işletme adı</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12 m4 l4">
+                        <input required name="city" type="text" value="<%=formBefore.city%>" id="autocomplete-input" class="autocomplete">
+                        <label for="autocomplete-input">Stajın yapılacağı şehir</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="traineeform">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>Staj Başvuru Formu</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="healthform">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>Sağlık Hizmet Bildirim Formu</label>
+                    </div>
+
+                </div>
+            </div>
+            <div style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px; margin-top: 9px;">
+
+                <div class="row">
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="idcardphoto">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>Nüfus Cüzdanı Fotokopisi(Önlü/Arkalı)</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="unemployedform">
+                            <option value="none" selected>Yok</option>
+                            <option value="yes">Var</option>
+                        </select>
+                        <label>İşsizlik Fonu Öğrenci ve İşveren Formu</label>
+                    </div>
+                    <div class="input-field col s12 m4 l4">
+                        <select required name="ghi">
+                            <option value="none" selected>Hayır</option>
+                            <option value="yes">Evet</option>
+                        </select>
+                        <label>Genel Sağlık Sigortalıyım(GSS)</label>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div id="trainee_price" class="center input-field col s12 m12 l12">
+                        <p>
+                            <label>
+                                <input name="companyprice" type="checkbox" class="red-text filled-in" />
+                                <span>Staj yapacağınız kurumdan ücret alacak mısınız?</span>
+                            </label>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="hide" id="hide_content"
+                style="border-style: solid; border-width: 1px; border-radius: 3px; padding: 15px; margin-top: 9px;">
+
+                <div id="option">
+                    <div class="row">
+                        <div class="input-field col s12 m4 l4">
+                            <input name="companyname" type="text" id="autocomplete-input" class="autocomplete">
+                            <label for="autocomplete-input">Stajın yapılacağı işletme adı</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <select name="companypersonals">
+                                <option value="1" selected>20'den az</option>
+                                <option value="2">20'den fazla</option>
+                            </select>
+                            <label>İşletmede çalışan personel sayısı</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input name="taxno" type="text" id="vergino" class="">
+                            <label for="vergino">İşletmenin vergi numarası</label>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m4 l4">
+                            <input name="bankname" type="text" id="bankname" class="">
+                            <label for="bankname">İşletmenin banka ve şube adı</label>
+                        </div>
+
+                        <div class="input-field col s12 m4 l4">
+
+                            <input value="TR" name="ibanno" type="text" id="iban" class="">
+                            <label for="iban">İşletme IBAN numarası</label>
+                        </div>
+                        <div class="input-field col s12 m4 l4">
+                            <input name="companyphonenumber" type="number" id="iban" class="">
+                            <label for="iban">İşletme telefon numarası</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12 m6 l6">
+                            <input name="address" type="text" id="address" class="">
+                            <label for="address">İşletmenin açık adresi</label>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <select name="companytype">
+                                <option value="1" selected>Özel</option>
+                                <option value="2">Devlet</option>
+                            </select>
+                            <label>İşletmenin niteliği</label>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <a onClick="sub();" class="waves-effect waves-light red white-text btn btn-small center-align center"
+                style="margin-top: 10px;">Kaydet / Güncelle</a>
+
+
+
+</form>
+<%}%>
+<%}%>

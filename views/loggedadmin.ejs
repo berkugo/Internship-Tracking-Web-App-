@@ -1,0 +1,91 @@
+<%-include partials/headers/header.ejs%>
+
+
+
+
+<div class="container-fluid" style="padding:5px;">
+
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="col s12 m3 l3 offset-l1 center" style="border-radius: 5px;">
+            <ul id="slide-out" style="padding: 10px" class="sidenav sidenav-fixed">
+                <li>
+
+<img 
+                                class="center-align center whiteresponsive-img"style="width: 150px; padding:20px;"
+                            src="/images/logo.png">
+
+                    <ul class="collection" style="font-size: small;">
+
+                        <li class=" collection-item avatar">
+                            <i class="material-icons red darken-4 circle">school</i>
+
+                            <p><%=name%><br>
+                                <%=studentNumber%>
+
+                            </p>
+                        </li>
+                        <li class="collection-item avatar ">
+                            <i class="material-icons red darken-4 circle">subtitles</i>
+                            <%if(department === -12){%>
+                            <p>Mühendislik ve Doğa Bilimleri Fakültesi <br>
+                                Bilgisayar Mühendisliği<br>
+                                Öğretim Görevlisi<br> <%}%>
+                    </p>
+                     <%if(pw.level === 2){%>
+                                Yetkiler: Genel yönetici
+                                <%}else if(pw.level === 1){%>
+                                Yetkiler: Moderatör
+                                <%}else if(pw.level === 0){%>
+                                Yetkiler: Bölümün genel yöneticisi tarafından Moderatör olarak eklenmediğiniz için
+                                herhangi bir yetkiniz bulunmuyor.
+
+                                <%}%>
+
+
+                </li>
+
+                <div class="collection left-align">
+                 <%if(pw.level === 2){%>
+
+                                <a href="" class="collection-item black-text"><i
+                                        class="red-text text-darken-4 material-icons circle left">view_headline</i>Duyuru
+                                    Ekle</a>
+                                <a id="createTraineeForm" href="/auth/trainee/default" class="collection-item black-text"> <i
+                                        class="red-text text-darken-4 material-icons circle left">more_horiz</i>Staj
+                                    Kabul &
+                                    Onay</a>
+                                <a id="" href="/auth/period/default" class="collection-item black-text"> <i
+                                        class="red-text text-darken-4 material-icons circle left">import_export</i>Staj
+                                    Süreci</a>
+                                <a id="" href="/auth/addadmin/list" class="collection-item black-text"> <i
+                                        class="red-text text-darken-4 material-icons circle left">priority_high</i>Moderatör
+                                    Ekle</a>
+                                <%}%> 
+                 <%if(pw.level === 1){%>
+
+                                <a href="" class="collection-item black-text"><i
+                                        class="red-text text-darken-4 material-icons circle left">view_headline</i>Duyuru
+                                    Ekle</a>
+                                <a id="createTraineeForm" href="/auth/trainee" class="collection-item black-text"> <i
+                                        class="red-text text-darken-4 material-icons circle left">edit</i>Staj Kabul &
+                                    Onay</a>
+                                <%}%> 
+
+            </ul>
+
+        </div>
+    <%if(page === 0) {%>
+                                <%-include partials/contents/admin/trainee.ejs %>
+                                <%}else if(page === 1){%>
+                                <%-include partials/contents/admin/addadmin.ejs %>
+                                <%}else{%>
+                                <%-include partials/contents/admin/start.ejs %>
+                                <%}%>
+    </div>
+
+
+    </div>
+
+</div>
+<%-include partials/footers/footer.ejs%>
